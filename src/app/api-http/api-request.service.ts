@@ -9,11 +9,12 @@ import { User } from '../Classes/user';
 export class ApiRequestService {
   promise:any;
   user: string |undefined;
+  repos:any
   
   constructor(private http: HttpClient) {}
   
-  //for githubprofile
-  searchQuery(search: string){
+  //for githubuser
+  searchUser(search:string): any{
     this.promise = new Promise((resolve, reject) => {
       this.http.get<User>(environment.apiUrl + search +{ headers: new HttpHeaders({ 'Authorization': 'token ' + atob(environment.apiKey) }) }).toPromise().then((response) => {
         resolve(response);
@@ -22,6 +23,13 @@ export class ApiRequestService {
       });
     });
     return this.promise;
+  }
+
+  //for github repos
+  searchRepo(search:string):any{
+    this.repos = this.http.get<any>(environment.apiUrl+search,{headers: new HttpHeaders({'Authorization': 'token ' + atob(environment.apiKey)})}).toPromise();
+    return this.repos;
+
   }
 
 }

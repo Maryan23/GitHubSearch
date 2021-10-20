@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiRequestService } from '../api-http/api-request.service';
 
 @Component({
   selector: 'app-repo',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RepoComponent implements OnInit {
 
-  constructor() { }
+  repos :any;
+  user!: string;
+
+  constructor(private apiRequest:ApiRequestService) { }
+
+  getUserRepositories(){
+    this.apiRequest.searchUser(this.user);
+    this.apiRequest.searchRepo(this.repos).then( (repos: any)=> {
+      this.repos = repos;
+    })
+  }
 
   ngOnInit(): void {
   }
