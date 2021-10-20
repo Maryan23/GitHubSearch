@@ -1,22 +1,41 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ApiRequestService } from '../api-http/api-request.service';
 import { User } from '../Classes/user';
-import { Repository } from '../Classes/repository';
+
 
 @Component({
-  selector: 'app-searchform',
-  templateUrl: './searchform.component.html',
-  styleUrls: ['./searchform.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit{
+export class UserComponent implements OnInit {
+  repos!: any;
+  user: any;
+  searchUser = new User('','','','');
 
 
-  @Output() udetails = new EventEmitter<User>();
-  @Output() rdetails = new EventEmitter<Repository>();
+ search(value:string){
+  this.apiRequest.promise.then((response: any) => {
+    this.user = response;
+  }, (error: any) => {
+    console.log(error);
+  });
+ }
 
-  newUser = new User('','','','');
+ search
+  
+    this.apiRequest.repos.then((response: any) => {
+      this.repos = response;
 
-  searchUser(){
-    this.udetails.emit(this.newUser);
+    }, (error: any) => {
+      console.log(error);
+    });
+
+    constructor(private apiRequest: ApiRequestService) { }
+
+  
+
+  ngOnInIt(): void {}
 
 }
+

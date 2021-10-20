@@ -14,9 +14,9 @@ export class ApiRequestService {
   constructor(private http: HttpClient) {}
   
   //for githubuser
-  searchUser(search:string): any{
+  searchUser(user:string): any{
     this.promise = new Promise((resolve, reject) => {
-      this.http.get<User>(environment.apiUrl + search +{ headers: new HttpHeaders({ 'Authorization': 'token ' + atob(environment.apiKey) }) }).toPromise().then((response) => {
+      this.http.get<User>(environment.apiUrl + user +{ headers: new HttpHeaders({ 'Authorization': 'token ' + atob(environment.apiKey) }) }).toPromise().then((response) => {
         resolve(response);
       }, error => {
         reject(error);

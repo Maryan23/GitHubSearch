@@ -6,22 +6,20 @@ import { ApiRequestService } from './api-http/api-request.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SearchformComponent } from './searchform/searchform.component';
-import { UserComponent } from './user/user.component';
 import { RepoComponent } from './repo/repo.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchformComponent,
-    UserComponent,
-    RepoComponent
+    RepoComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [ApiRequestService],
   bootstrap: [AppComponent]
