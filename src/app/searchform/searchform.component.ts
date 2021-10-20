@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from '../Classes/user';
 import { Repository } from '../Classes/repository';
@@ -8,13 +8,20 @@ import { Repository } from '../Classes/repository';
   templateUrl: './searchform.component.html',
   styleUrls: ['./searchform.component.css']
 })
-export class SearchformComponent implements OnInit {
+export class SearchformComponent implements OnInit{
 
-  public githubUserQuery!:string;
 
-  constructor(){}
+  @Output() udetails = new EventEmitter<User>();
+  @Output() rdetails = new EventEmitter<Repository>();
 
-  ngOnInit(): void {
+  newUser = new User('','','','');
+
+  searchUser(){
+    this.udetails.emit(this.newUser);
+
+  SearchformComponent.constructor(){}
+
+  ngOnInit(): void {}
+    
   }
-
 }
