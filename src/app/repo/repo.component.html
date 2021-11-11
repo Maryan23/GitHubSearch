@@ -2,19 +2,20 @@
     <div class="mt-4">
         <form class ="form-inline" #repoform='ngForm'>
             <div class="form-group">
-                <input type="text" [(ngModel)]="userName" name="userName"  class="form-control" placeholder="Type a Github User Name" required>
+                <input type="text" class="form-control"[(ngModel)]="userName" name="userName" (keyup)="getUserRepositories()" placeholder="Enter a username" required>
             </div>
-            <p class="text-info text-center" click="getUserRepositories()">{{getUserRepositories}}<i class="fa fa-search "></i></p>
+
         </form>
     </div>
 </div>
 <div class ="container">
     <div class = "row">
-        <div class = "col-md-8" *ngFor ='let repo of repos'>
+        <div class = "col-md-6" *ngFor ='let repo of repos'>
+            <hr>
             <h3>{{repo.name}}</h3>
-            <h4>{{repo.desription}}</h4>
+            <p>{{repo.description}}</p>
             <p>{{repo.created_at}}</p>
-            <a class = "btn btn-warning" href = {{repo.html_url}}>Go to Repo!</a>
+            <a class = "btn btn-info" href = {{repo.html_url}}>Go to Repo!</a>
         </div>
     </div>
 </div>
