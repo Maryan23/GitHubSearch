@@ -14,7 +14,7 @@ export class RepoComponent implements OnInit {
   constructor(private apiRequest:ApiRequestService) { }
 
   getUserRepositories(){
-    this.apiRequest.getuserName(this.userName);
+    this.apiRequest.getUserName(this.userName);
     this.apiRequest.getUserRepos().then( (repos: any)=> {
       this.repos = repos;
     })
