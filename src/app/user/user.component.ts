@@ -14,12 +14,10 @@ export class UserComponent implements OnInit {
   constructor(private apiRequestService:ApiRequestService){} 
 
  searchUser(){
-  this.apiRequestService.getUserName(this.userName)
-  this.apiRequestService.getUserInfo().then((profile:any)=>{
-  this.myProfile=profile;
-  }).catch((err:any)=>{
-    console.log(err)
-  });
+   this.apiRequestService.getUserName(this.userName)
+   this.apiRequestService.getUserData().then( (user: any)=>{
+     this.myProfile=user;
+    })
   }
   ngOnInit():void{
   this.searchUser();

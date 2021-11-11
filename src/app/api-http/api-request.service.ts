@@ -19,7 +19,7 @@ export class ApiRequestService {
     return this.http.get<any[]>(`${this.apiUrl}${this.userName}??access_token=+${this.apiKey}`).toPromise()
   }
 
-  getuserName(userName:string){
+  getUserName(userName:string){
     this.userName = userName
   }
 
