@@ -1,35 +1,34 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { User } from '../Classes/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiRequestService {
-  promise:any;
-  user: string |undefined;
-  repos:any
+  private userName!:string;
+  private repoName!:string;
+  private apiUrl = environment.apiUrl;
+  private apiKey = environment.apiKey;
   
   constructor(private http: HttpClient) {}
   
-  //for githubuser
-  searchUser(user:string): any{
-    this.promise = new Promise((resolve, reject) => {
-      this.http.get<User>(environment.apiUrl + user +{ headers: new HttpHeaders({ 'Authorization': 'token ' + atob(environment.apiKey) }) }).toPromise().then((response) => {
-        resolve(response);
-      }, error => {
-        reject(error);
-      });
-    });
-    return this.promise;
+  //for github user
+  getUserData(){
+    return this.http.get<any[]>(`${this.apiUrl}${this.userName}??access_token=+${this.apiKey}`).toPromise()
   }
 
-  //for github repos
-  searchRepo(search:string):any{
-    this.repos = this.http.get<any>(environment.apiUrl+search,{headers: new HttpHeaders({'Authorization': 'token ' + atob(environment.apiKey)})}).toPromise();
-    return this.repos;
-
+  getuserName(userName:string){
+    this.userName = userName
   }
 
+  //for user repositories
+
+  getUserRepos(){
+    return this.http.get<any[]>(`${this.apiUrl}${this.userName}/repos??access_token=+${this.apiKey}`).toPromise();
+  }
+
+  getRepos(repositories:string){
+    return this.repoName = repositories
+  }
 }

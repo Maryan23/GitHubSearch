@@ -2,9 +2,25 @@
     <div class="mt-4">
         <form class ="form-inline" #userform='ngForm'>
             <div class="form-group">
-                <input type="search" [(ngModel)]="user" name="user"  class="form-control" placeholder="Type a Github User Name" required>
+                <input type="text" [(ngModel)]="userName" name="userName"  class="form-control" placeholder="Type a Github User Name" required>
             </div>
-            <p class="text-info text-center" click="searchUser()">{{searchUser.user}}<i class="fa fa-search "></i></p>
+            <p class="text-info text-center" click="searchProfile()">{{searchUser.user}}<i class="fa fa-search "></i></p>
         </form>
+    </div>
+</div>
+
+<div class ="container">
+    <div class = "row">
+        <div class ="col-md-7">
+            <img id = "avatar" [src]='myProfile.avatar_url'>
+        </div>
+        <div class = "col-md-5">
+            <h3>Name:{{myProfile.name}}</h3>
+            <h4>Username:{{myProfile.login}}</h4>
+            <p>Bio:{{myProfile.bio}}</p>
+            <p>Followers:{{myProfile.followers}}</p>
+            <p>Following:{{myProfile.following}}</p>
+            <p>Account created on:{{myProfile.created_at}}</p>
+        </div>
     </div>
 </div>

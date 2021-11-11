@@ -21,7 +21,7 @@ import { UserComponent } from './user/user.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [ApiRequestService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

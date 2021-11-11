@@ -10,32 +10,19 @@ import { User } from '../Classes/user';
 })
 export class UserComponent implements OnInit {
   repos!: any;
-  user: any;
-  searchUser = new User('','','','');
+  myProfile! : any;
+  userName:string='';
+constructor(private apiRequestService:ApiRequestService){} 
 
-
- search(value:string){
-  this.apiRequest.promise.then((response: any) => {
-    this.user = response;
-  }, (error: any) => {
-    console.log(error);
+searchProfile(){
+  this.apiRequestService.getUserName(this.userName)
+  this.apiRequestService.getUserInfo().then(profile=>{
+    this.myProfile=profile;
+  }).catch((err:any)=>{
+    console.log(err)
   });
- }
-
- search
-  
-    this.apiRequest.repos.then((response: any) => {
-      this.repos = response;
-
-    }, (error: any) => {
-      console.log(error);
-    });
-
-    constructor(private apiRequest: ApiRequestService) { }
-
-  
-
-  ngOnInIt(): void {}
-
+  }
+  ngOnInit():void{
+  this.searchProfile();
+  }
 }
-
