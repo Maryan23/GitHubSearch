@@ -9,6 +9,7 @@ export class ApiRequestService {
   [x: string]: any;
   private userName!:string;
   private repoName!:string;
+  
   private apiUrl = environment.apiUrl;
   private apiKey = environment.apiKey;
   
