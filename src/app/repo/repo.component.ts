@@ -9,18 +9,18 @@ import { ApiRequestService } from '../api-http/api-request.service';
 export class RepoComponent implements OnInit {
 
   repos :any;
-  user!: string;
+  userName!: string;
 
   constructor(private apiRequest:ApiRequestService) { }
 
   getUserRepositories(){
-    this.apiRequest.searchUser(this.user);
-    this.apiRequest.searchRepo(this.repos).then( (repos: any)=> {
+    this.apiRequest.getuserName(this.userName);
+    this.apiRequest.getUserRepos().then( (repos: any)=> {
       this.repos = repos;
     })
   }
 
   ngOnInit(): void {
+    this.getUserRepositories();
   }
-
 }

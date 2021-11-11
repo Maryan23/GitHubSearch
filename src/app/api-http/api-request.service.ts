@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ApiRequestService {
+  [x: string]: any;
   private userName!:string;
   private repoName!:string;
   private apiUrl = environment.apiUrl;
